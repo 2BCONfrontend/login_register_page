@@ -1,0 +1,49 @@
+#register_page {
+    position: absolute;
+    left: 50%; top: 50%;
+    transform: translate(-50%, -45%);
+    background-color: white;
+    text-align: center;
+}
+
+#logo{ 
+    width: 300px; height: 60px; 
+    margin-bottom: 20px;
+    justify-content: center;
+    background-color: #C1DAFF;
+}
+
+/* 입력창 */
+.input{ 
+    width: 300px; height: 40px;
+    outline: 5px; outline-color: #C4C4C4;
+    outline-style: auto;
+    border: 5px; border-color: #C4C4C4;
+    border-radius: 0.2em;
+    margin-bottom: 10px; 
+}
+#nickname, #id, #email{
+    width: 220px; height: 40px;
+    margin-right: 5px;
+}
+#nickname{
+    background-image: faIdBadge;
+}
+
+/* 회원가입 버튼 */
+#register_button { 
+    width: 300px; height: 40px;
+    background-color: #C1DAFF; 
+    border: 0; outline: 0;
+    border-radius: 0.2em;
+    color: white; 
+    font-weight: bold; font-size: 16px;
+}
+.confirm{
+    width: 75px; height: 40px;
+    background-color: #E5E5E5; color:gray;
+    border: 0; outline: 0;
+    border-radius: 0.2em;
+    text-align: center;
+    font-size: 12px;
+}
