@@ -1,11 +1,13 @@
-import React, { useState } from 'react'
+import React, { useState, Component } from 'react'
 import { useDispatch } from 'react-redux';
 import { registerUser, checkDuplicateNickname, checkDuplicateId, checkDuplicateEmail } from '../../../_actions/user_action'; // 회원가입 액션
 import { withRouter } from 'react-router-dom';
+
+import HeaderNav from '../MainDesign/HeaderNav';
+import SubNav from '../MainDesign/SubNav';
+import UnderNav from '../MainDesign/UnderNav';
+
 import './RegisterPage.css'
-import '../Basic.css'
-import { faCalendarCheck } from '@fortawesome/free-regular-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 function RegisterPage(props) { // 회원가입 페이지
 
@@ -110,20 +112,9 @@ function RegisterPage(props) { // 회원가입 페이지
         }
     }
 
-    return ( // 회원가입 폼
-        <div>
-            <div id = "header">
-                <h1>Logo</h1>
-                <div id="nav">
-                    <div class="nav_category"><a href="#">리뷰</a></div>
-                    <div class="nav_category"><a href="#">공동 구매</a></div>
-                    <div class="nav_category"><a href="#">자유 게시판</a></div>
-                    <div class="nav_category"><a href="#"><FontAwesomeIcon icon={faCalendarCheck} size="2x"></FontAwesomeIcon></a></div>
-                </div>
-            </div>
-
-            <div id="register_page">
-                <div id="logo"></div>
+    class ResgisterForm extends Component{
+        render() {
+            return (
                 <form id="register_form" onSubmit={onSubmitHandler}>
                     <input class="input" id="nickname" type="text" value={Nickname} placeholder=" 닉네임을 입력하세요" onChange={onNicknameHandler} />
                     <button class ="confirm" id="nickname_confirm" onClick={checkNickname}>중복 확인</button>
@@ -140,11 +131,27 @@ function RegisterPage(props) { // 회원가입 페이지
                     <br />
                     <button id="register_button">회원 가입</button>
                 </form>
-            </div>
+            );
+        }
+    }
 
-            <div id = "footer">
-                <p>Logo</p>
-            </div>
+    class RegisterPage extends Component {
+        render() {
+            return (
+                <div id="register_page">
+                    <div id="logo"></div>
+                    <ResgisterForm />
+                </div>
+            );
+        }
+    }
+
+    return (
+        <div>
+            <HeaderNav />
+            <SubNav />
+            <RegisterPage />
+            <UnderNav />
         </div>
     )
 }

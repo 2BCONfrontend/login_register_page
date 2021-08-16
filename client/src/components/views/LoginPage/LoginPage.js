@@ -1,11 +1,13 @@
-import React, { useState } from 'react'
+import React, { useState, Component } from 'react'
 import { useDispatch } from 'react-redux'
 import { loginUser } from '../../../_actions/user_action'; // 로그인 액션
 import { withRouter, Link } from 'react-router-dom';
+
+import HeaderNav from '../MainDesign/HeaderNav';
+import SubNav from '../MainDesign/SubNav';
+import UnderNav from '../MainDesign/UnderNav.js';
+
 import './LoginPage.css'
-import '../Basic.css'
-import { faCalendarCheck } from '@fortawesome/free-regular-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 function LoginPage(props) { // 로그인 페이지
 
@@ -36,21 +38,18 @@ function LoginPage(props) { // 로그인 페이지
                 }
             })
     }
-    
-    return ( // 로그인 폼
-        <div>
-            <div id = "header">
-                <h1>Logo</h1>
-                <div id="nav">
-                    <div class="nav_category"><a href="#">리뷰</a></div>
-                    <div class="nav_category"><a href="#">공동 구매</a></div>
-                    <div class="nav_category"><a href="#">자유 게시판</a></div>
-                    <div class="nav_category"><a href="#"><FontAwesomeIcon icon={faCalendarCheck} size="2x"></FontAwesomeIcon></a></div>
-                </div>
-            </div>
 
-            <div id ="login_page">
-                <div id="logo"></div>
+    class LoginButton extends Component { // 로그인 버튼
+        render() {
+            return (
+                <button id="login_button" onClick={onSubmitHandler}> 로그인 </button>
+            );
+        }
+    }
+
+    class LoginForm extends Component { // 로그인 폼
+        render() {
+            return (
                 <form id = "login_form" onSubmit={onSubmitHandler}>
                     <input class="input" id="login_id" type="id" value={Id} onChange={onIdHandler} />
                     <br />
@@ -59,17 +58,33 @@ function LoginPage(props) { // 로그인 페이지
                     <div id="findIdPw">
                         <a href="#">아이디/비밀번호 찾기</a>
                     </div>
-                    <button id="login_button" onClick={onSubmitHandler}> 로그인 </button>
+                    <LoginButton />
                     <br />
                 </form>
-                <Link to = "../register">
-                    <button id="register_button">회원 가입</button>
-                </Link>
-            </div>
+            );
+        }
+    }
 
-            <div id = "footer">
-                <p>Logo</p>
-            </div>
+    class LoginPage extends Component { // 로그인 페이지
+        render() {
+            return (
+                <div id ="login_page">
+                    <div id="logo"></div>
+                    <LoginForm />
+                    <Link to = "../register">
+                        <button id="register_button">회원 가입</button>
+                    </Link>
+                </div>
+            );
+        }
+    }
+    
+    return (
+        <div className="App">
+            <HeaderNav />
+            <SubNav />
+            <LoginPage />
+            <UnderNav />
         </div>
     )
 }
