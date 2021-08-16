@@ -147,7 +147,7 @@ function RegisterPage(props) { // 회원가입 페이지
     }
 
     return (
-        <div>
+        <div className="App">
             <HeaderNav />
             <SubNav />
             <RegisterPage />
