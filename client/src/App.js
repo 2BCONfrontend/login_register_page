@@ -8,7 +8,7 @@ import {
 import LandingPage from './components/views/LandingPage/LandingPage'
 import LoginPage from './components/views/LoginPage/LoginPage'
 import RegisterPage from './components/views/RegisterPage/RegisterPage'
-import BoardPage from "./components/views/BoardPage/BoardPage";
+import BoardPage from "./components/views/BoardPage/ReviewBoardPage";
 import Auth from './hoc/auth'
 
 // 로그인 한 회원은 진입 못하는 페이지: Login Page, Register Page

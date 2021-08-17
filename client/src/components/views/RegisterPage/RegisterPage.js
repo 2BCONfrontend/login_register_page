@@ -24,7 +24,7 @@ function RegisterPage(props) { // 회원가입 페이지
     const [dpEmail, setDpEmail] = useState(false);
 
     // 폼 값 입력
-    const onNicknameHandler = (event) => { setNickname(event.currentTarget.value); console.log(Nickname); }
+    const onNicknameHandler = (event) => { setNickname(event.currentTarget.value); }
     const onIdHandler = (event) => { setId(event.currentTarget.value) }
     const onEmailHandler = (event) => { setEmail(event.currentTarget.value) }
     const onPasswordHandler = (event) => { setPassword(event.currentTarget.value) }
