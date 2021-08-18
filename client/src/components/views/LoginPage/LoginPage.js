@@ -1,4 +1,4 @@
-import React, { useState, Component } from 'react'
+import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { loginUser } from '../../../_actions/user_action'; // 로그인 액션
 import { withRouter, Link } from 'react-router-dom';

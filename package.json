@@ -20,6 +20,7 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.13.2",
     "react-icons": "^4.2.0",
+    "react-star-rating-component": "^1.4.1",
     "register-service-worker": "^1.7.2"
   },
   "devDependencies": {
