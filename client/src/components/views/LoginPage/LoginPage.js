@@ -38,18 +38,13 @@ function LoginPage(props) { // 로그인 페이지
                 }
             })
     }
-
-    class LoginButton extends Component { // 로그인 버튼
-        render() {
-            return (
-                <button id="login_button" onClick={onSubmitHandler}> 로그인 </button>
-            );
-        }
-    }
-
-    class LoginForm extends Component { // 로그인 폼
-        render() {
-            return (
+    
+    return (
+        <div class="App">
+            <HeaderNav />
+            <SubNav />
+            <div id ="login_page">
+                <div id="logo"></div>
                 <form id = "login_form" onSubmit={onSubmitHandler}>
                     <input class="input" id="login_id" type="id" value={Id} onChange={onIdHandler} />
                     <br />
@@ -58,32 +53,13 @@ function LoginPage(props) { // 로그인 페이지
                     <div id="findIdPw">
                         <a href="#">아이디/비밀번호 찾기</a>
                     </div>
-                    <LoginButton />
+                    <button id="login_button" onClick={onSubmitHandler}> 로그인 </button>
                     <br />
                 </form>
-            );
-        }
-    }
-
-    class LoginPage extends Component { // 로그인 페이지
-        render() {
-            return (
-                <div id ="login_page">
-                    <div id="logo"></div>
-                    <LoginForm />
-                    <Link to = "../register">
-                        <button id="register_button">회원 가입</button>
-                    </Link>
-                </div>
-            );
-        }
-    }
-    
-    return (
-        <div className="App">
-            <HeaderNav />
-            <SubNav />
-            <LoginPage />
+                <Link to = "../register">
+                    <button id="register_button">회원 가입</button>
+                </Link>
+            </div>
             <UnderNav />
         </div>
     )

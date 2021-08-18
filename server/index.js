@@ -19,13 +19,10 @@ mongoose.connect(config.mongoURI, {
 .then(() => console.log('MongoDB Connected...'))
 .catch(err => console.log(err))
 
-app.get('/', (req, res) => {
-  res.send('Hello World! 김유정')
-})
-
 // 1. 회원가입
 app.post('/api/users/register', (req, res) => {
   // 회원 가입할 때 필요한 정보들을 client에서 가져오면 데이터베이스에 넣어준다.
+  console.log(res.body); //
   const user = new User(req.body)
   user.save((err, userInfo) => {
       if(err) return res.json({ success:false, err })
@@ -88,7 +85,7 @@ app.get('/api/users/logout', auth, (req, res) => {
 
 // 5. 중복 확인
 // 5-1. 닉네임 중복확인
-app.post('/api/users', (req, res) => {
+app.post('/api/users/checkNickname', (req, res) => {
   // 같은 닉네임이 데이터베이스에 존재하는지
   User.findOne({ nickname: req.body.nickname }, (err, user) => {
     if(!user) { // 사용자가 없는 경우
@@ -105,7 +102,7 @@ app.post('/api/users', (req, res) => {
   })
 })
 // 5-2. 아이디 중복확인
-app.post('/api/users', (req, res) => {
+app.post('/api/users/checkId', (req, res) => {
   // 같은 아이디가 데이터베이스에 존재하는지
   User.findOne({ id: req.body.id }, (err, user) => {
     if(!user) { // 사용자가 없는 경우
@@ -122,7 +119,7 @@ app.post('/api/users', (req, res) => {
   })
 })
 // 5-3. 이메일 중복확인
-app.post('/api/users', (req, res) => {
+app.post('/api/users/checkEmail', (req, res) => {
   // 같은 이메일이 데이터베이스에 존재하는지
   User.findOne({ email: req.body.email }, (err, user) => {
     if(!user) { // 사용자가 없는 경우

@@ -1,4 +1,4 @@
-import React, { useState, Component } from 'react'
+import React, { useState } from 'react'
 import { useDispatch } from 'react-redux';
 import { registerUser, checkDuplicateNickname, checkDuplicateId, checkDuplicateEmail } from '../../../_actions/user_action'; // 회원가입 액션
 import { withRouter } from 'react-router-dom';
@@ -24,7 +24,7 @@ function RegisterPage(props) { // 회원가입 페이지
     const [dpEmail, setDpEmail] = useState(false);
 
     // 폼 값 입력
-    const onNicknameHandler = (event) => { setNickname(event.currentTarget.value); }
+    const onNicknameHandler = (event) => { setNickname(event.currentTarget.value) }
     const onIdHandler = (event) => { setId(event.currentTarget.value) }
     const onEmailHandler = (event) => { setEmail(event.currentTarget.value) }
     const onPasswordHandler = (event) => { setPassword(event.currentTarget.value) }
@@ -72,7 +72,6 @@ function RegisterPage(props) { // 회원가입 페이지
                     return alert("사용할 수 없는 이메일입니다.")
                 }
             })
-        
     }
 
     // 제출
@@ -81,10 +80,15 @@ function RegisterPage(props) { // 회원가입 페이지
 
         if (Password !== ConfirmPassword) { return alert('비밀번호와 비밀번호 확인은 같아야 합니다.') }
 
+
         // 중복 확인을 모두 진행한 경우
         if(dpNickname && dpId && dpEmail) {
 
-            if (Password.length < 8) { return alert('비밀번호는 최소 8자 이상이어야 합니다.') }
+            var emailRegExp = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/
+            var passwordRegExp = /^(?=.*\d)(?=.*[a-zA-Z])[0-9a-zA-Z]{8,30}$/
+
+            if(!passwordRegExp.test(Password)) { return alert('유효하지 않은 비밀번호입니다. 비밀번호는 8자 이상 영문, 숫자 조합으로 설정해주세요.'); }
+            if(!emailRegExp.test(Email)) { return alert('유효하지 않은 이메일입니다. 다시 설정해주세요.'); }
 
             let body = {
                 id: Id,
@@ -112,9 +116,12 @@ function RegisterPage(props) { // 회원가입 페이지
         }
     }
 
-    class ResgisterForm extends Component{
-        render() {
-            return (
+    return (
+        <div class="App">
+            <HeaderNav />
+            <SubNav />
+            <div id="register_page">
+                <div id="logo"></div>
                 <form id="register_form" onSubmit={onSubmitHandler}>
                     <input class="input" id="nickname" type="text" value={Nickname} placeholder=" 닉네임을 입력하세요" onChange={onNicknameHandler} />
                     <button class ="confirm" id="nickname_confirm" onClick={checkNickname}>중복 확인</button>
@@ -129,28 +136,9 @@ function RegisterPage(props) { // 회원가입 페이지
                     <br />
                     <input class="input" type="password" value={ConfirmPassword} placeholder=" 비밀번호를 한 번 더 입력하세요" onChange={onConfirmPasswordHandler} />
                     <br />
-                    <button id="register_button">회원 가입</button>
+                    <button id="register_button" onClick={onSubmitHandler}>회원 가입</button>
                 </form>
-            );
-        }
-    }
-
-    class RegisterPage extends Component {
-        render() {
-            return (
-                <div id="register_page">
-                    <div id="logo"></div>
-                    <ResgisterForm />
-                </div>
-            );
-        }
-    }
-
-    return (
-        <div className="App">
-            <HeaderNav />
-            <SubNav />
-            <RegisterPage />
+            </div>
             <UnderNav />
         </div>
     )

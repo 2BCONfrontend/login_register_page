@@ -42,7 +42,7 @@ export function auth() {
 // 4. 닉네임 중복 확인
 export function checkDuplicateNickname(dataToSubmit) {
 
-    const request = axios.post('/api/users', dataToSubmit) // 서버에 get 요청
+    const request = axios.post('/api/users/checkNickname', dataToSubmit) // 서버에 get 요청
         .then(response => response.data)
     return {
         type: CHECK_DUPLICATE_NICKNAME,
@@ -53,7 +53,7 @@ export function checkDuplicateNickname(dataToSubmit) {
 // 5. 아이디 중복 확인
 export function checkDuplicateId(dataToSubmit) {
 
-    const request = axios.post('/api/users', dataToSubmit) // 서버에 get 요청
+    const request = axios.post('/api/users/checkId', dataToSubmit) // 서버에 get 요청
         .then(response => response.data)
     return {
         type: CHECK_DUPLICATE_ID,
@@ -63,7 +63,7 @@ export function checkDuplicateId(dataToSubmit) {
 // 6. 이메일 중복 확인
 export function checkDuplicateEmail(dataToSubmit) {
 
-    const request = axios.post('/api/users', dataToSubmit) // 서버에 get 요청
+    const request = axios.post('/api/users/checkEmail', dataToSubmit) // 서버에 get 요청
         .then(response => response.data)
     return {
         type: CHECK_DUPLICATE_EMAIL,
