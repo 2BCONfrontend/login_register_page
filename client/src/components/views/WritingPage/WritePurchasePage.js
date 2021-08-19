@@ -13,16 +13,17 @@ function WritePurchasePage(props) {
 
     const dispatch = useDispatch();
 
-    const [Title, setTitle] = useState("");
-    const [Platform, setPlatform] = useState("");
-    const [Content, setContent] = useState("");
-    const [State, setState] = useState("모집중");
+    const [Title, setTitle] = useState("");         // 제목
+    const [Platform, setPlatform] = useState("");   // 플랫폼 (넷플릭스, 왓챠, 티빙)
+    const [Content, setContent] = useState("");     // 내용
+    const [State, setState] = useState("모집중");   // 모집여부
 
     const onTitleHandler = (event) => { setTitle(event.currentTarget.value); }
     const onPlatformHandler = (event) => { setPlatform(event.currentTarget.value); }
     const onContentHandler = (event) => { setContent(event.currentTarget.value); }
     const onStateHandler = (event) => { setState(event.currentTarget.value); }
     
+    // 제출
     const onSubmitHandler = (event) => {
         event.preventDefault(); // refresh 방지
 

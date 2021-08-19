@@ -32,34 +32,20 @@
     border: 2px solid #C4C4C4;
     border-radius: 0.5em;
 }
-#writing_form>#form_header{ 
-    margin-bottom: 5px;
-}
-#form_header>input {
-    border: none;
-}
-#form_header>input, #form_header>select{
-    margin-left: 10px;
-}
+#writing_form>#form_header{ margin-bottom: 5px; }
+#form_header>input { border: none; }
+#form_header>input, #form_header>select{ margin-left: 10px; }
 #writing_form>textarea{ 
     margin-top: 5px; 
-    width: 100%; height: 60%;
+    width: 100%; height: 55%;
     border: none;
 }
-#hr {
-    background-color: #C4C4C4;
-    border: 0px;
-}
+#mobile_hr{ display: none; }
+#tag_icon{ margin: 0px 10px; }
 
-#title{
-    width: 50%; margin-right: 10px;
-}
-#program{
-    width: 30%; margin-right: 10px;
-}
-ul.ant-rate{
-    margin-left: 5px;
-}
+#title{ width: 70%; margin-right: 10px; }
+#program{ width: 40%; margin-right: 10px; }
+ul.ant-rate{ margin-left: 5px; }
 
 /* 글 작성 버튼 */
 #writing_form>#writing_button_area{ 
@@ -73,4 +59,20 @@ ul.ant-rate{
     background-color: white; 
     border: 2px solid #C4C4C4;
     border-radius: 0.2em;
+}
+
+@media screen and (max-width: 1200px) {
+    #body>#writing_page { width: 85%; }
+    #writing_form{
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    #mobile_hr{ display: initial; }
+    #body>#writing_page { width: 90%; }
+    #writing_form{
+        width: 100%;
+    }
+    #advertisement{ display: none; }
 }

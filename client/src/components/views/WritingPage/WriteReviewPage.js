@@ -6,6 +6,7 @@ import { withRouter } from 'react-router';
 import HeaderNav from '../MainDesign/HeaderNav';
 import SubNav from '../MainDesign/SubNav';
 import UnderNav from '../MainDesign/UnderNav';
+import { FaTags } from "react-icons/fa";
 
 import { Rate } from 'antd';
 import './WritingPage.css';
@@ -14,14 +15,14 @@ function WriteReviewPage(props) {
 
     const dispatch = useDispatch();
 
-    const [Title, setTitle] = useState("");
-    const [Program, setProgram] = useState("");
-    const [Rating, setRating] = useState(0);
-    const [Category, setCategory] = useState("");
+    const [Title, setTitle] = useState("");         // 제목
+    const [Program, setProgram] = useState("");     // 프로그램명
+    const [Rating, setRating] = useState(0);        // 별점
+    const [Category, setCategory] = useState("");   // 카테고리 (드라마, 영화, 예능)
     const [Netflix, setNetflix] = useState(false);
     const [Watcha, setWatcha] = useState(false);
     const [Tving, setTving] = useState(false);
-    const [Content, setContent] = useState("");
+    const [Content, setContent] = useState("");     // 내용
 
     const onTitleHandler = (event) => { setTitle(event.currentTarget.value); }
     const onProgramHandler = (event) => { setProgram(event.currentTarget.value); }
@@ -32,6 +33,7 @@ function WriteReviewPage(props) {
     const onTvingHandler = (evnet) => { setTving(true); }
     const onContentHandler = (event) => { setContent(event.currentTarget.value); }
     
+    // 제출
     const onSubmitHandler = (event) => {
         event.preventDefault(); // refresh 방지
 
@@ -71,20 +73,22 @@ function WriteReviewPage(props) {
                             제목<input id="title" value={Title} onChange={onTitleHandler} />
                             <hr size="1" noshade="noshade"/>
                             프로그램 찾기<input id="program" value={Program} onChange={onProgramHandler} />
+                            <br id="mobile_hr" />
                             별점 
                             <Rate allowHalf value={Rating} onChange={onRatingHandler} />
                             <hr size="1" noshade="noshade"/>
                             카테고리
                             <select id="category" value={Category} onChange={onCategoryHandler} >
                                 <option value="">선택</option>
-                                <option value="drama">드라마</option>
-                                <option value="movie">영화</option>
-                                <option value="entertainment">예능</option>
+                                <option value="드라마">드라마</option>
+                                <option value="영화">영화</option>
+                                <option value="예능">예능</option>
                             </select>
                             <hr size="1" noshade="noshade"/>
+                            <span id="tag_icon"> {<FaTags></FaTags>}</span>
                             <input id="netflix" type="radio" value={Netflix} onChange={onNetflixHandler}/> 넷플릭스 
                             <input id="watcha" type="radio" value={Watcha} onChange={onWatchaHandler}/> 왓챠 
-                            <input id="tiving" type="radio" value={Tving} onChange={onTvingHandler}/> 티빙
+                            <input id="tving" type="radio" value={Tving} onChange={onTvingHandler}/> 티빙
                             <hr size="1" noshade="noshade"/>
                         </div>
                         {/* 글 작성란 */}

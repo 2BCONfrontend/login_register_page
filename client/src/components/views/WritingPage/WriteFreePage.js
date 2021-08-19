@@ -13,14 +13,15 @@ function WriteFreePage(props) {
 
     const dispatch = useDispatch();
 
-    const [Title, setTitle] = useState("");
-    const [Category, setCategory] = useState("");
-    const [Content, setContent] = useState("");
+    const [Title, setTitle] = useState("");         // 제목
+    const [Category, setCategory] = useState("");   // 카테고리 (정보, 잡담, 질문)
+    const [Content, setContent] = useState("");     // 내용
 
     const onTitleHandler = (event) => { setTitle(event.currentTarget.value); }
     const onCategoryHandler = (event) => { setCategory(event.currentTarget.value); }
     const onContentHandler = (event) => { setContent(event.currentTarget.value); }
     
+    // 제출
     const onSubmitHandler = (event) => {
         event.preventDefault(); // refresh 방지
 
