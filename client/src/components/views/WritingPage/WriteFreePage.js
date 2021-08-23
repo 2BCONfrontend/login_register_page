@@ -25,11 +25,15 @@ function WriteFreePage(props) {
     const onSubmitHandler = (event) => {
         event.preventDefault(); // refresh 방지
 
+        if(Category === "") { return alert('분류를 설정해주세요') }
+
         let body = {
             title: Title,
             category: Category,
             content: Content
         }
+
+        console.log(body)
 
         dispatch(registerFree(body))
             .then(response => {

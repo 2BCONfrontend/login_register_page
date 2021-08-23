@@ -28,14 +28,16 @@ function WriteReviewPage(props) {
     const onProgramHandler = (event) => { setProgram(event.currentTarget.value); }
     const onRatingHandler = (value) => { setRating(value); }
     const onCategoryHandler = (event) => { setCategory(event.currentTarget.value); }
-    const onNetflixHandler = (evnet) => { setNetflix(true); }
-    const onWatchaHandler = (evnet) => { setWatcha(true); }
-    const onTvingHandler = (evnet) => { setTving(true); }
+    const onNetflixHandler = (event) => { setNetflix(true); }
+    const onWatchaHandler = (event) => { setWatcha(true); }
+    const onTvingHandler = (event) => { setTving(true); }
     const onContentHandler = (event) => { setContent(event.currentTarget.value); }
     
     // 제출
     const onSubmitHandler = (event) => {
         event.preventDefault(); // refresh 방지
+
+        if(Category === "") { return alert('카테고리를 설정해주세요') }
 
         let body = {
             title: Title,
@@ -47,6 +49,8 @@ function WriteReviewPage(props) {
             tving: Tving,
             content: Content
         }
+
+        console.log(body)
 
         dispatch(registerReview(body))
             .then(response => {

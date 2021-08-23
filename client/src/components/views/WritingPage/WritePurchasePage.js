@@ -17,23 +17,30 @@ function WritePurchasePage(props) {
     const [Platform, setPlatform] = useState("");   // 플랫폼 (넷플릭스, 왓챠, 티빙)
     const [Content, setContent] = useState("");     // 내용
     const [State, setState] = useState("모집중");   // 모집여부
+    const [Recruit, setRecruit] = useState();
 
     const onTitleHandler = (event) => { setTitle(event.currentTarget.value); }
     const onPlatformHandler = (event) => { setPlatform(event.currentTarget.value); }
     const onContentHandler = (event) => { setContent(event.currentTarget.value); }
     const onStateHandler = (event) => { setState(event.currentTarget.value); }
+    const onRecruitHandler = (event) => { setRecruit(event.currentTarget.value); }
     
     // 제출
     const onSubmitHandler = (event) => {
         event.preventDefault(); // refresh 방지
 
+        if(Platform === "") { return alert('플랫폼을 설정해주세요') }
+        
         let body = {
             title: Title,
             platform: Platform,
             content: Content,
-            state: State
+            state: State,
+            recruit: Recruit
         }
-
+        
+        console.log(body)
+        
         dispatch(registerPurchase(body))
             .then(response => {
                 if (response.payload.registerSuccess) {
@@ -65,6 +72,9 @@ function WritePurchasePage(props) {
                                 <option value="watcha">왓챠</option>
                                 <option value="tving">티빙</option>
                             </select>
+                            <hr size="1" noshade="noshade"/>
+                            모집인원
+                            <input id="recruit" value={Recruit} onChange={onRecruitHandler} />
                             <hr size="1" noshade="noshade"/>
                             <input name="complete" type="radio" checked="checked" value="모집중" onChange={onStateHandler} /> 모집중 
                             <input name="complete" type="radio" value="모집완료" onChange={onStateHandler}/> 모집완료 
