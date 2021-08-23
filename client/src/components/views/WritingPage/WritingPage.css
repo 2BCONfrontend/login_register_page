@@ -5,7 +5,7 @@
     flex-direction: column;
     width: 100%; height: 500px;
 }
-#body>#writing_page {
+#writing_page {
     margin: 5px 0px;
     text-align: center;
     display: flex;
@@ -15,17 +15,15 @@
 }
 
 /* 광고창 */
-#writing_page>#advertisement {
+#advertisement {
     margin-left: 10px;
-    position: inherit;
-    width: 20%; height: 100%;
     background-color: #C4C4C4;
 }
 
 /* 글 작성 폼 */
 #writing_form {
     position: inherit;
-    width: 80%; height: 100%;
+    height: 100%;
     padding: 10px;
     text-align: left;
     font-size: 13px;
@@ -37,7 +35,7 @@
 #form_header>input, #form_header>select{ margin-left: 10px; }
 #writing_form>textarea{ 
     margin-top: 5px; 
-    width: 100%; height: 55%;
+    width: 100%; height: 60%;
     border: none;
 }
 #mobile_hr{ display: none; }
@@ -73,6 +71,9 @@ ul.ant-rate{ margin-left: 5px; }
     #body>#writing_page { width: 90%; }
     #writing_form{
         width: 100%;
+    }
+    #writing_form>textarea{
+        height: 55%;
     }
     #advertisement{ display: none; }
 }

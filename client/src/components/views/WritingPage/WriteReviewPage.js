@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux'
 import { registerReview } from '../../../_actions/write_action';
 import { withRouter } from 'react-router';
+import { Row, Col } from 'antd';
 
 import HeaderNav from '../MainDesign/HeaderNav';
 import SubNav from '../MainDesign/SubNav';
@@ -69,8 +70,9 @@ function WriteReviewPage(props) {
             <SubNav />
             {/* 바디 */}
             <div id="body">
-                <div id ="writing_page">
-                    {/* 글 작성 폼 */}
+                <Row id ="writing_page">
+                    <Col flex={5}>
+                        {/* 글 작성 폼 */}
                     <form id="writing_form" onSubmit={onSubmitHandler}>
                         {/* 글 작성 헤더 */}
                         <div id="form_header">
@@ -102,8 +104,11 @@ function WriteReviewPage(props) {
                             <button id="writing_button" onClick={onSubmitHandler}>등록</button>
                         </div>
                     </form>
-                    <div id="advertisement">광고 자리</div>
-                </div>
+                    </Col>
+                    <Col id="advertisement" flex={2}>
+                        <div>광고 자리</div>
+                    </Col>
+                </Row>
             </div>
             <UnderNav />
         </div>

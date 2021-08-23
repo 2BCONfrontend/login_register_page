@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux'
 import { registerPurchase } from '../../../_actions/write_action';
 import { withRouter } from 'react-router';
+import { Row, Col } from 'antd';
 
 import HeaderNav from '../MainDesign/HeaderNav';
 import SubNav from '../MainDesign/SubNav';
@@ -58,37 +59,41 @@ function WritePurchasePage(props) {
             <SubNav />
             {/* 바디 */}
             <div id="body">
-                <div id ="writing_page">
-                    {/* 글 작성 폼 */}
-                    <form id="writing_form" onSubmit={onSubmitHandler}>
-                        {/* 글 작성 헤더 */}
-                        <div id="form_header">
-                            제목<input id="title" value={Title} onChange={onTitleHandler} />
-                            <hr size="1" noshade="noshade"/>
-                            플랫폼
-                            <select id="platform" value={Platform} onChange={onPlatformHandler}>
-                                <option value="">선택</option>
-                                <option value="netflix">넷플릭스</option>
-                                <option value="watcha">왓챠</option>
-                                <option value="tving">티빙</option>
-                            </select>
-                            <hr size="1" noshade="noshade"/>
-                            모집인원
-                            <input id="recruit" value={Recruit} onChange={onRecruitHandler} />
-                            <hr size="1" noshade="noshade"/>
-                            <input name="complete" type="radio" checked="checked" value="모집중" onChange={onStateHandler} /> 모집중 
-                            <input name="complete" type="radio" value="모집완료" onChange={onStateHandler}/> 모집완료 
-                            <hr size="1" noshade="noshade"/>
-                        </div>
-                        {/* 글 작성란 */}
-                        <textarea id="writing_content" value={Content} placeholder="내용을 입력하세요" onChange={onContentHandler} ></textarea>
-                        {/* 글 작성 버튼 */}
-                        <div id="writing_button_area">
-                            <button id="writing_button" onClick={onSubmitHandler}>등록</button>
-                        </div>
-                    </form>
-                    <div id="advertisement">광고 자리</div>
-                </div>
+                <Row id ="writing_page">
+                    <Col flex={5}>
+                        {/* 글 작성 폼 */}
+                        <form id="writing_form" onSubmit={onSubmitHandler}>
+                            {/* 글 작성 헤더 */}
+                            <div id="form_header">
+                                제목<input id="title" value={Title} onChange={onTitleHandler} />
+                                <hr size="1" noshade="noshade"/>
+                                플랫폼
+                                <select id="platform" value={Platform} onChange={onPlatformHandler}>
+                                    <option value="">선택</option>
+                                    <option value="netflix">넷플릭스</option>
+                                    <option value="watcha">왓챠</option>
+                                    <option value="tving">티빙</option>
+                                </select>
+                                <hr size="1" noshade="noshade"/>
+                                모집인원
+                                <input id="recruit" value={Recruit} onChange={onRecruitHandler} />
+                                <hr size="1" noshade="noshade"/>
+                                <input name="complete" type="radio" checked="checked" value="모집중" onChange={onStateHandler} /> 모집중 
+                                <input name="complete" type="radio" value="모집완료" onChange={onStateHandler}/> 모집완료 
+                                <hr size="1" noshade="noshade"/>
+                            </div>
+                            {/* 글 작성란 */}
+                            <textarea id="writing_content" value={Content} placeholder="내용을 입력하세요" onChange={onContentHandler} ></textarea>
+                            {/* 글 작성 버튼 */}
+                            <div id="writing_button_area">
+                                <button id="writing_button" onClick={onSubmitHandler}>등록</button>
+                            </div>
+                        </form>
+                    </Col>
+                    <Col id="advertisement" flex={2}>
+                        <div>광고 자리</div>
+                    </Col>
+                </Row>
             </div>
             <UnderNav />
         </div>
