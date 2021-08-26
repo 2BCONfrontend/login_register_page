@@ -10,7 +10,8 @@ import {
     GET_USER_COMMENT,
     WITHDRAWER,
     CHANGE_USER_INFO,
-    CHANGE_PASSWORD
+    CHANGE_PASSWORD,
+    LOGOUT_USER,
 } from '../_actions/types';
 
 export default function user (state = {}, action) {
@@ -21,6 +22,8 @@ export default function user (state = {}, action) {
             return { ...state, register: action.payload }
         case AUTH_USER:
             return { ...state, userData: action.payload }
+        case LOGOUT_USER:
+            return {...state }
         case CHECK_DUPLICATE_NICKNAME:
             return { ...state, permit: action.payload }
         case CHECK_DUPLICATE_ID:

@@ -55,12 +55,31 @@ function MemberInfoPage(props) {
                     setRegisterDate(response.payload.data.register_date)
                     setRecentLogin(response.payload.data.recent_login)
                     setPostings(response.payload.data.postings)
-                    setComments(response.payload.data.comments)
-                    setLoad(true)   
+                    setComments(response.payload.data.comments)  
                 } else {
                     return alert('Falied to load member info')
                 }
             })
+
+        dispatch(getUserPosting(body))
+            .then(response => {
+                if (response.payload.success) {
+                    setPostings(response.payload.data.postings) 
+                } else {
+                    return alert('Falied to load member info')
+                }
+            })
+
+        dispatch(getUserComment(body))
+            .then(response => {
+                if (response.payload.success) {
+                    setPostings(response.payload.data.comments)  
+                } else {
+                    return alert('Falied to load member info')
+                }
+            })
+        
+        setLoad(true)
     }, [])
 
     const renderPostings = (posts) => {

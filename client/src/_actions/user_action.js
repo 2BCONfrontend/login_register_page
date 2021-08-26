@@ -11,7 +11,8 @@ import {
     GET_USER_COMMENT,
     WITHDRAWER,
     CHANGE_USER_INFO,
-    CHANGE_PASSWORD
+    CHANGE_PASSWORD,
+    LOGOUT_USER
 } from './types';
 
 // 1. 로그인
@@ -132,6 +133,16 @@ export function changePassword(dataToSubmit) {
         .then(response => response.data)
     return {
         type: CHANGE_PASSWORD,
+        payload: request
+    }
+}
+// 13. 로그아웃
+export function logoutUser(){
+    const request = axios.get('/api/users/logout')
+    .then(response => response.data);
+
+    return {
+        type: LOGOUT_USER,
         payload: request
     }
 }
