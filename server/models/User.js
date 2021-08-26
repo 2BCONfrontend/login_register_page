@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+/*const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
@@ -88,4 +88,4 @@ userSchema.statics.findByToken = function(token, cb){
 }
 
 const User = mongoose.model('User', userSchema)
-module.exports = { User }
+module.exports = { User }*/

@@ -1,4 +1,4 @@
-const express = require('express') // (노드 js 프레임워크)
+/*const express = require('express') // (노드 js 프레임워크)
 const app = express() // 앱 생성
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
@@ -138,4 +138,4 @@ app.post('/api/users/checkEmail', (req, res) => {
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`)
-})
+})*/

@@ -1,0 +1,7 @@
+.member_info_button { 
+    background-color: #97C2FF; 
+    border: 0; outline: 0; border-radius: 0;
+    padding: 5px 10px; margin-left: 10px;
+    color: white; 
+    font-size: 13px;
+}

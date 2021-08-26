@@ -8,8 +8,6 @@ import HeaderNav from '../MainDesign/HeaderNav';
 import SubNav from '../MainDesign/SubNav';
 import UnderNav from '../MainDesign/UnderNav';
 
-import './WritingPage.css';
-
 function WritePurchasePage(props) {
 
     const dispatch = useDispatch();
@@ -18,13 +16,11 @@ function WritePurchasePage(props) {
     const [Platform, setPlatform] = useState("");   // 플랫폼 (넷플릭스, 왓챠, 티빙)
     const [Content, setContent] = useState("");     // 내용
     const [State, setState] = useState("모집중");   // 모집여부
-    const [Recruit, setRecruit] = useState();
 
     const onTitleHandler = (event) => { setTitle(event.currentTarget.value); }
     const onPlatformHandler = (event) => { setPlatform(event.currentTarget.value); }
     const onContentHandler = (event) => { setContent(event.currentTarget.value); }
     const onStateHandler = (event) => { setState(event.currentTarget.value); }
-    const onRecruitHandler = (event) => { setRecruit(event.currentTarget.value); }
     
     // 제출
     const onSubmitHandler = (event) => {
@@ -37,11 +33,8 @@ function WritePurchasePage(props) {
             platform: Platform,
             content: Content,
             state: State,
-            recruit: Recruit
         }
-        
-        console.log(body)
-        
+
         dispatch(registerPurchase(body))
             .then(response => {
                 if (response.payload.registerSuccess) {
@@ -58,41 +51,86 @@ function WritePurchasePage(props) {
             <HeaderNav />
             <SubNav />
             {/* 바디 */}
-            <div id="body">
-                <Row id ="writing_page">
-                    <Col flex={5}>
-                        {/* 글 작성 폼 */}
-                        <form id="writing_form" onSubmit={onSubmitHandler}>
-                            {/* 글 작성 헤더 */}
-                            <div id="form_header">
-                                제목<input id="title" value={Title} onChange={onTitleHandler} />
-                                <hr size="1" noshade="noshade"/>
-                                플랫폼
-                                <select id="platform" value={Platform} onChange={onPlatformHandler}>
+            <div style={{
+                textAlign: 'center', margin: '0 auto', 
+                width: '80%', height: '500px'
+            }}>
+                <Row style={{ height: '100%', margin: '25px auto', textAlign: 'left' }}>
+                    <Col xs={{ span: 24 }} lg={{ span: 18 }}>
+                    {/* 글 작성 폼 */}
+                    <form  
+                        style={{ 
+                            height: '100%', padding: '10px',
+                            textAlign: 'left', fontSize: '13px', 
+                            border: '1.5px solid #C4C4C4', borderRadius: '0.5em' 
+                        }} 
+                        onSubmit={onSubmitHandler}
+                    >
+                    {/* 글 작성 헤더 */}
+                    <div style={{ height: '22%' }}>
+                        <Row>
+                            <Col span={4}>제목</Col>
+                            <Col span={20}>
+                                <input value={Title} onChange={onTitleHandler} style={{ width: '100%', border: '0.5px solid #C4C4C4' }}/>
+                            </Col>
+                        </Row>
+                        <hr size="1" noshade="noshade" style={{ border: '0.1px solid #C4C4C4' }}/>
+                        <Row>
+                            <Col span={5}>플랫폼</Col>
+                            <Col span={19}>
+                                <select 
+                                    value={Platform} 
+                                    onChange={onPlatformHandler}
+                                >
                                     <option value="">선택</option>
                                     <option value="netflix">넷플릭스</option>
                                     <option value="watcha">왓챠</option>
                                     <option value="tving">티빙</option>
                                 </select>
-                                <hr size="1" noshade="noshade"/>
-                                모집인원
-                                <input id="recruit" value={Recruit} onChange={onRecruitHandler} />
-                                <hr size="1" noshade="noshade"/>
-                                <input name="complete" type="radio" checked="checked" value="모집중" onChange={onStateHandler} /> 모집중 
-                                <input name="complete" type="radio" value="모집완료" onChange={onStateHandler}/> 모집완료 
-                                <hr size="1" noshade="noshade"/>
-                            </div>
-                            {/* 글 작성란 */}
-                            <textarea id="writing_content" value={Content} placeholder="내용을 입력하세요" onChange={onContentHandler} ></textarea>
-                            {/* 글 작성 버튼 */}
-                            <div id="writing_button_area">
-                                <button id="writing_button" onClick={onSubmitHandler}>등록</button>
-                            </div>
-                        </form>
-                    </Col>
-                    <Col id="advertisement" flex={2}>
-                        <div>광고 자리</div>
-                    </Col>
+                            </Col>
+                        </Row>
+                        <hr size="1" noshade="noshade" style={{ border: '0.1px solid #C4C4C4' }}/>          
+                        <input 
+                            style={{ marginLeft: '10px' }}
+                            name="complete" type="radio" checked="checked" 
+                            value="모집중" onChange={onStateHandler} 
+                        /> 모집중 
+                        <input 
+                            style={{ marginLeft: '10px' }}
+                            name="complete" type="radio" value="모집완료" 
+                            onChange={onStateHandler}/> 모집완료 
+                        <hr size="1" noshade="noshade" style={{ border: '0.1px solid #C4C4C4' }}/>
+                    </div>
+                    {/* 글 작성란 */}
+                    <div style={{ height: '78%' }}>
+                        <div style={{ height: '90%'}}>
+                            <textarea 
+                                value={Content} 
+                                placeholder="내용을 입력하세요" 
+                                onChange={onContentHandler}
+                                style={{ width: '100%', height: '100%', border: '0.5px solid #C4C4C4' }}
+                            ></textarea>
+                        </div>
+                        {/* 글 작성 버튼 */}
+                        <div style={{ textAlign: 'center', marginTop: '8px'}}>
+                            <button 
+                                style={{ 
+                                    width: '5em', backgroundColor: 'white', 
+                                    border: '2px solid #C4C4C4', borderRadius: '0.2em'
+                                }}
+                                onClick={onSubmitHandler}
+                            >
+                                등록
+                            </button>
+                        </div>
+                    </div>
+                </form>
+                </Col>
+                <Col xs={{ span: 0 }} lg={{ span: 6 }}>
+                    <div style={{ height: '100%', marginLeft: '20px', backgroundColor: '#C4C4C4' }}>
+                        광고창
+                    </div>
+                </Col>
                 </Row>
             </div>
             <UnderNav />

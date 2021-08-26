@@ -4,10 +4,15 @@ import {
     AUTH_USER,
     CHECK_DUPLICATE_NICKNAME,
     CHECK_DUPLICATE_ID,
-    CHECK_DUPLICATE_EMAIL
-} from '../_actions/types'; // 액션 종류
+    CHECK_DUPLICATE_EMAIL,
+    GET_USER_INFO,
+    GET_USER_POSTING,
+    GET_USER_COMMENT,
+    WITHDRAWER,
+    CHANGE_USER_INFO,
+    CHANGE_PASSWORD
+} from '../_actions/types';
 
-// reducer: 상태를 변화시키는 로직이 있는 함수
 export default function user (state = {}, action) {
     switch (action.type) {
         case LOGIN_USER:
@@ -22,6 +27,18 @@ export default function user (state = {}, action) {
             return { ...state, permit: action.payload }
         case CHECK_DUPLICATE_EMAIL:
             return { ...state, permit: action.payload }
+        case GET_USER_INFO:
+            return { ...state, success: action.payload }
+        case GET_USER_POSTING:
+            return { ...state, success: action.payload }
+        case GET_USER_COMMENT:
+            return { ...state, success: action.payload }
+        case WITHDRAWER: 
+            return { ...state, success: action.payload }
+        case CHANGE_USER_INFO:
+            return { ...state, success: action.payload }
+        case CHANGE_PASSWORD:
+            return { ...state, success: action.payload }
         default:
             return state;
     }

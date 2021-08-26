@@ -5,10 +5,15 @@ import {
     AUTH_USER,
     CHECK_DUPLICATE_NICKNAME,
     CHECK_DUPLICATE_ID,
-    CHECK_DUPLICATE_EMAIL
+    CHECK_DUPLICATE_EMAIL,
+    GET_USER_INFO,
+    GET_USER_POSTING,
+    GET_USER_COMMENT,
+    WITHDRAWER,
+    CHANGE_USER_INFO,
+    CHANGE_PASSWORD
 } from './types';
 
-// action: 상태 변화를 일으킬 때마다 참조하는 객체
 // 1. 로그인
 export function loginUser(dataToSubmit) {
 
@@ -67,6 +72,66 @@ export function checkDuplicateEmail(dataToSubmit) {
         .then(response => response.data)
     return {
         type: CHECK_DUPLICATE_EMAIL,
+        payload: request
+    }
+}
+// 7. 회원정보 가져오기
+export function getUserInfo(dataToSubmit) {
+
+    const request = axios.post('/api/users/getInfo', dataToSubmit) // 서버에 get 요청
+        .then(response => response.data)
+    return {
+        type: GET_USER_INFO,
+        payload: request
+    }
+}
+// 8. 작성한 글 가져오기
+export function getUserPosting(dataToSubmit) {
+
+    const request = axios.post('/api/users/getPosting', dataToSubmit) // 서버에 get 요청
+        .then(response => response.data)
+    return {
+        type: GET_USER_POSTING,
+        payload: request
+    }
+}
+// 9. 작성한 댓글 가져오기
+export function getUserComment(dataToSubmit) {
+
+    const request = axios.post('/api/users/getComment', dataToSubmit) // 서버에 get 요청
+        .then(response => response.data)
+    return {
+        type: GET_USER_COMMENT,
+        payload: request
+    }
+}
+// 10. 탈퇴하기
+export function withdrawl(dataToSubmit) {
+
+    const request = axios.post('/api/users/withdrawl', dataToSubmit) // 서버에 get 요청
+        .then(response => response.data)
+    return {
+        type: WITHDRAWER,
+        payload: request
+    }
+}
+// 11. 회원정보 변경하기
+export function changeUserInfo(dataToSubmit) {
+
+    const request = axios.post('/api/users/changeUserInfo', dataToSubmit) // 서버에 get 요청
+        .then(response => response.data)
+    return {
+        type: CHANGE_USER_INFO,
+        payload: request
+    }
+}
+// 12. 비밀번호 변경하기
+export function changePassword(dataToSubmit) {
+
+    const request = axios.post('/api/users/changePassword', dataToSubmit) // 서버에 get 요청
+        .then(response => response.data)
+    return {
+        type: CHANGE_PASSWORD,
         payload: request
     }
 }
